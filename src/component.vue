@@ -173,11 +173,11 @@ export default {
         // Get css classes
         getCssClasses(index) {
             const vuedal = this.vuedals[index];
-
-            let classNames = vuedal.name +' '+ vuedal.size;
+			
+			let classNames = [vuedal.name];
 
             if (index < this.$last)
-                classNames += ' disabled';
+				classNames.push(disabled);
 
             return classNames;
         },
@@ -215,7 +215,7 @@ export default {
 <transition tag="div" name="vuedal">
     <div class="vuedals" v-show="vuedals.length" tabindex="0" @keyup.esc.prevent="handleEscapeKey($event)" @click="dismiss()">
         <div class="modal" style="display: block !important;" v-for="(vuedal, index) in vuedals" :key="index" :class="getCssClasses(index)" @click.stop>
-            <div class="modal-dialog">
+            <div :class="['modal-dialog', vuedal.size]">
 				<div class="modal-content">
 					<div class="modal-header" v-if="(vuedal.title || vuedal.dismissable) && !vuedal.header">
 						<h5 class="modal-title">{{ vuedal.title }}</h5>
