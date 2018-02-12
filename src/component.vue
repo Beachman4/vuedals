@@ -215,20 +215,22 @@ export default {
 <transition tag="div" name="vuedal">
     <div class="vuedals" v-show="vuedals.length" tabindex="0" @keyup.esc.prevent="handleEscapeKey($event)" @click="dismiss()">
         <div class="modal" style="display: block !important;" v-for="(vuedal, index) in vuedals" :key="index" :class="getCssClasses(index)" @click.stop>
-            <div class="modal-content">
-                <div class="modal-header" v-if="(vuedal.title || vuedal.dismissable) && !vuedal.header">
-                    <h5 class="modal-title">{{ vuedal.title }}</h5>
-                    <button v-if="vuedal.dismissable" type="button" class="close" @click="dismiss()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-header" v-if="vuedal.header">
-                    <component :is="vuedal.header.component" v-bind="vuedal.header.props"></component>
-                </div>
-                <div class="modal-body">
-                    <component :is="vuedal.component" v-bind="vuedal.props" ref="components"></component>
-                </div>
-            </div>
+            <div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" v-if="(vuedal.title || vuedal.dismissable) && !vuedal.header">
+						<h5 class="modal-title">{{ vuedal.title }}</h5>
+						<button v-if="vuedal.dismissable" type="button" class="close" @click="dismiss()">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-header" v-if="vuedal.header">
+						<component :is="vuedal.header.component" v-bind="vuedal.header.props"></component>
+					</div>
+					<div class="modal-body">
+						<component :is="vuedal.component" v-bind="vuedal.props" ref="components"></component>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 </transition>
