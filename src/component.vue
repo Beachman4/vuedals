@@ -214,7 +214,7 @@ export default {
 <template>
 <transition tag="div" name="vuedal">
     <div class="vuedals" v-show="vuedals.length" tabindex="0" @keyup.esc.prevent="handleEscapeKey($event)" @click="dismiss()">
-        <div class="modal" v-for="(vuedal, index) in vuedals" :key="index" :class="getCssClasses(index)" @click.stop>
+        <div class="modal show" v-for="(vuedal, index) in vuedals" :key="index" :class="getCssClasses(index)" @click.stop>
             <div class="modal-content">
                 <div class="modal-header" v-if="(vuedal.title || vuedal.dismissable) && !vuedal.header">
                     <h5 class="modal-title">{{ vuedal.title }}</h5>
