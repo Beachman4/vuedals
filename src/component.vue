@@ -177,7 +177,7 @@ export default {
 			let classNames = [vuedal.name];
 
             if (index < this.$last)
-				classNames.push(disabled);
+				classNames.push('disabled');
 
             return classNames;
         },
